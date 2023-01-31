@@ -3,6 +3,7 @@
 //  AR-Storybook
 //
 //  Created by Angela Li Montez on 1/26/23.
+//  Based on AR code template from Apple
 //
 
 import UIKit
@@ -18,19 +19,27 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the view's delegate
         sceneView.delegate = self
-    
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
         
-        // Set the scene to the view
-        sceneView.scene = scene
+        // Show statistics such as fps and timing information
+//        sceneView.showsStatistics = true
+        
+        sceneView.autoenablesDefaultLighting = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
+        let configuration = ARImageTrackingConfiguration()
+        
+        // Bundle.main is current directory
+        if let imageToTrack = ARReferenceImage.referenceImages(inGroupNamed: "BookPages", bundle: Bundle.main){
+            
+            configuration.trackingImages = imageToTrack
+            // If using WorldTracking, use configuration.detectionImages instead
+            configuration.maximumNumberOfTrackedImages = 2
+            
+        }
 
         // Run the view's session
         sceneView.session.run(configuration)
@@ -45,27 +54,64 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     // MARK: - ARSCNViewDelegate
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let node = SCNNode()
-     
+        
+        // Is the anchor an image?
+        if let imageAnchor = anchor as? ARImageAnchor{
+            let plane = SCNPlane(
+                width: imageAnchor.referenceImage.physicalSize.width,
+                height: imageAnchor.referenceImage.physicalSize.height
+            )
+            plane.firstMaterial?.diffuse.contents = UIColor(white: 1.0, alpha: 0.0)
+            
+            let planeNode = SCNNode(geometry: plane)
+            planeNode.eulerAngles.x = -.pi / 2
+            
+            node.addChildNode(planeNode)
+            
+            if imageAnchor.referenceImage.name == "BookCover" {
+                if let eleScene = SCNScene(named: "art.scnassets/Gerald_Cover.scn"){
+                    if let eleNode = eleScene.rootNode.childNodes.first{
+                        eleNode.eulerAngles.x = .pi
+                        planeNode.addChildNode(eleNode)
+                    }
+                }
+                if let pigScene = SCNScene(named: "art.scnassets/Piggie_Cover.scn"){
+                    if let pigNode = pigScene.rootNode.childNodes.first{
+                        pigNode.eulerAngles.x = .pi
+                        planeNode.addChildNode(pigNode)
+                    }
+                }
+            } else if imageAnchor.referenceImage.name == "page2" {
+                if let eleScene = SCNScene(named: "art.scnassets/Gerald_02.scn"){
+                    if let eleNode = eleScene.rootNode.childNodes.first{
+                        eleNode.eulerAngles.x = .pi
+                        planeNode.addChildNode(eleNode)
+                    }
+                }
+                if let pigScene = SCNScene(named: "art.scnassets/Piggie_02.scn"){
+                    if let pigNode = pigScene.rootNode.childNodes.first{
+                        pigNode.eulerAngles.x = .pi
+                        planeNode.addChildNode(pigNode)
+                    }
+                }
+            } else if imageAnchor.referenceImage.name == "page3" {
+                if let eleScene = SCNScene(named: "art.scnassets/Gerald_03.scn"){
+                    if let eleNode = eleScene.rootNode.childNodes.first{
+                        eleNode.eulerAngles.x = .pi
+                        planeNode.addChildNode(eleNode)
+                    }
+                }
+                if let pigScene = SCNScene(named: "art.scnassets/Piggie_03.scn"){
+                    if let pigNode = pigScene.rootNode.childNodes.first{
+                        pigNode.eulerAngles.x = .pi
+                        planeNode.addChildNode(pigNode)
+                    }
+                }
+            }
+        }
+        
         return node
-    }
-*/
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
     }
 }
