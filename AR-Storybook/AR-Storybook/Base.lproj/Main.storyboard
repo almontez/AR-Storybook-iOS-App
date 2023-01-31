@@ -94,36 +94,6 @@
             </objects>
             <point key="canvasLocation" x="2469.4656488549617" y="26.760563380281692"/>
         </scene>
-        <!--ARCamera-->
-        <scene sceneID="tXr-a1-R10">
-            <objects>
-                <viewController title="ARCamera" id="BV1-FR-VrT" customClass="ARViewController" customModule="AR_Storybook" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="769"/>
-                            </arscnView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="GsS-dJ-CKf"/>
-                            <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
-                            <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
-                            <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" id="rJc-2c-zQA"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Camera" image="camera" catalog="system" selectedImage="camera.fill" id="Kve-HF-Hdo"/>
-                    <connections>
-                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4978" y="27"/>
-        </scene>
         <!--Guide-->
         <scene sceneID="6v8-o7-1Za">
             <objects>
@@ -141,11 +111,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1A-Xb-v8I">
+                                <rect key="frame" x="16" y="681" width="75" height="75"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="MLm-SG-WuR"/>
+                                    <constraint firstAttribute="width" constant="75" id="nEZ-gz-HRv"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="tertiarySystemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="speaker.wave.3" catalog="system"/>
+                                <connections>
+                                    <action selector="soundButtonPressed:" destination="eVl-Se-pb0" eventType="touchUpInside" id="rty-6M-2Zi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bUM-3k-Hrd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="x3i-K4-Y7J" firstAttribute="top" secondItem="bUM-3k-Hrd" secondAttribute="top" id="1FS-eD-oRq"/>
+                            <constraint firstItem="F1A-Xb-v8I" firstAttribute="top" secondItem="bUM-3k-Hrd" secondAttribute="top" constant="622" id="R0D-HH-LeN"/>
+                            <constraint firstItem="F1A-Xb-v8I" firstAttribute="leading" secondItem="ToM-x6-zXy" secondAttribute="leadingMargin" id="W8i-3o-fwW"/>
+                            <constraint firstItem="F1A-Xb-v8I" firstAttribute="leading" secondItem="bUM-3k-Hrd" secondAttribute="leading" constant="16" id="aAH-DO-YoG"/>
                             <constraint firstItem="x3i-K4-Y7J" firstAttribute="leading" secondItem="bUM-3k-Hrd" secondAttribute="leading" id="dnY-jY-a4m"/>
                             <constraint firstItem="bUM-3k-Hrd" firstAttribute="trailing" secondItem="x3i-K4-Y7J" secondAttribute="trailing" id="giQ-gZ-3Bb"/>
                             <constraint firstItem="bUM-3k-Hrd" firstAttribute="bottom" secondItem="x3i-K4-Y7J" secondAttribute="bottom" id="qCM-HN-Qhl"/>
@@ -154,10 +141,61 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Guide" image="g.square" catalog="system" selectedImage="g.square.fill" id="KKA-bK-L8a"/>
+                    <connections>
+                        <outlet property="soundButton" destination="F1A-Xb-v8I" id="GQM-dl-NWZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I91-BP-ola" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3723" y="27"/>
+        </scene>
+        <!--ARCamera-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController title="ARCamera" id="BV1-FR-VrT" customClass="ARViewController" customModule="AR_Storybook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="769"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cft-st-3nN">
+                                <rect key="frame" x="16" y="681" width="75" height="75"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="e8R-ou-pGv"/>
+                                    <constraint firstAttribute="width" constant="75" id="lm2-Kc-o3j"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="tertiarySystemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="speaker.wave.3" catalog="system"/>
+                                <connections>
+                                    <action selector="soundButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="y9s-4c-d2d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="GsS-dJ-CKf"/>
+                            <constraint firstItem="cft-st-3nN" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="622" id="KAi-y9-IqI"/>
+                            <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
+                            <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
+                            <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="topMargin" constant="-59" id="eaV-bW-ZVQ"/>
+                            <constraint firstItem="cft-st-3nN" firstAttribute="leading" secondItem="U0K-SW-4ec" secondAttribute="leadingMargin" id="hxu-X7-pWB"/>
+                            <constraint firstItem="cft-st-3nN" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="16" id="qIN-L3-TWu"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Camera" image="camera" catalog="system" selectedImage="camera.fill" id="Kve-HF-Hdo"/>
+                    <connections>
+                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <outlet property="soundButton" destination="cft-st-3nN" id="7gG-0F-Qlc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4977.8625954198469" y="26.760563380281692"/>
         </scene>
     </scenes>
     <resources>
@@ -169,7 +207,14 @@
         <image name="homeimg" width="414" height="808"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
+        <image name="speaker.wave.3" catalog="system" width="128" height="84"/>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>

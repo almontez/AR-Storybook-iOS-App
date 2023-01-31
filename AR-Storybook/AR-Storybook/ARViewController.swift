@@ -13,9 +13,14 @@ import ARKit
 class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet var soundButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Circle Button
+        soundButton.layer.cornerRadius = soundButton.frame.width / 2
+        soundButton.layer.masksToBounds = true
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -113,5 +118,11 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         }
         
         return node
+    }
+    
+    // MARK: - UI Functionalities
+    
+    @IBAction func soundButtonPressed(_ sender: UIButton) {
+        print("AR View Sound Button Pressed")
     }
 }
