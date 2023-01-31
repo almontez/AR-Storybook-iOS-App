@@ -1,5 +1,5 @@
 //
-//  GuideViewController.swift
+//  HomeViewController.swift
 //  AR-Storybook
 //
 //  Created by Angela Li Montez on 1/30/23.
@@ -7,13 +7,11 @@
 
 import UIKit
 
-class GuideViewController: UIViewController {
+class HomeViewController: UIViewController {
 
-    @IBOutlet var soundButton: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
     }
     
