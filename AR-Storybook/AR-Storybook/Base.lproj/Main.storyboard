@@ -7,6 +7,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Chewy.ttf">
+            <string>Chewy-Regular</string>
+        </array>
+        <array key="LeagueSpartan.ttf">
+            <string>LeagueSpartan-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Tab Bar Controller-->
         <scene sceneID="6sK-ex-qzo">
@@ -39,14 +47,45 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeimg" translatesAutoresizingMaskIntoConstraints="NO" id="uHk-QW-eXg">
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="MWt-cd-LMa" userLabel="titleCard">
+                                <rect key="frame" x="59" y="584.33333333333337" width="275" height="104.66666666666663"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Agk-ZV-E7q">
+                                        <rect key="frame" x="0.66666666666665719" y="0.0" width="274" height="77"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Storybook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXL-6o-t40">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="77"/>
+                                                <fontDescription key="fontDescription" name="Chewy-Regular" family="Chewy" pointSize="60"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCa-nO-QET">
+                                                <rect key="frame" x="247" y="0.0" width="27" height="32.333333333333336"/>
+                                                <fontDescription key="fontDescription" name="Chewy-Regular" family="Chewy" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNLOCK A NEW MAGICAL REALITY" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="8" translatesAutoresizingMaskIntoConstraints="NO" id="2CF-GC-kWa">
+                                        <rect key="frame" x="0.0" y="88" width="275" height="16.666666666666671"/>
+                                        <rect key="contentStretch" x="0.0" y="0.0" width="0.90000000000000002" height="1"/>
+                                        <fontDescription key="fontDescription" name="LeagueSpartan-SemiBold" family="League Spartan" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mbq-B6-w16"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="uHk-QW-eXg" firstAttribute="top" secondItem="mbq-B6-w16" secondAttribute="top" id="FzI-2f-nbZ"/>
                             <constraint firstItem="mbq-B6-w16" firstAttribute="trailing" secondItem="uHk-QW-eXg" secondAttribute="trailing" id="GOp-av-YqN"/>
+                            <constraint firstItem="mbq-B6-w16" firstAttribute="bottom" secondItem="MWt-cd-LMa" secondAttribute="bottom" constant="80" id="PUo-at-zBR"/>
                             <constraint firstItem="uHk-QW-eXg" firstAttribute="leading" secondItem="mbq-B6-w16" secondAttribute="leading" id="ZsM-ED-aah"/>
                             <constraint firstItem="mbq-B6-w16" firstAttribute="bottom" secondItem="uHk-QW-eXg" secondAttribute="bottom" id="lCc-8c-Bre"/>
+                            <constraint firstItem="MWt-cd-LMa" firstAttribute="centerX" secondItem="68P-XK-znu" secondAttribute="centerX" id="xpY-dL-a7t"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house.fill" id="FDv-ZY-je0"/>
@@ -96,6 +135,12 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guideimg" translatesAutoresizingMaskIntoConstraints="NO" id="x3i-K4-Y7J">
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How To Use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bx0-e3-jSL">
+                                <rect key="frame" x="88" y="109" width="217" height="65"/>
+                                <fontDescription key="fontDescription" name="Chewy-Regular" family="Chewy" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bUM-3k-Hrd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -104,13 +149,15 @@
                             <constraint firstItem="x3i-K4-Y7J" firstAttribute="leading" secondItem="bUM-3k-Hrd" secondAttribute="leading" id="dnY-jY-a4m"/>
                             <constraint firstItem="bUM-3k-Hrd" firstAttribute="trailing" secondItem="x3i-K4-Y7J" secondAttribute="trailing" id="giQ-gZ-3Bb"/>
                             <constraint firstItem="bUM-3k-Hrd" firstAttribute="bottom" secondItem="x3i-K4-Y7J" secondAttribute="bottom" id="qCM-HN-Qhl"/>
+                            <constraint firstItem="bx0-e3-jSL" firstAttribute="top" secondItem="bUM-3k-Hrd" secondAttribute="top" constant="50" id="swO-cn-QQE"/>
+                            <constraint firstItem="bx0-e3-jSL" firstAttribute="centerX" secondItem="ToM-x6-zXy" secondAttribute="centerX" id="u0h-dK-sbj"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Guide" image="g.square" catalog="system" selectedImage="g.square.fill" id="KKA-bK-L8a"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I91-BP-ola" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3723" y="37"/>
+            <point key="canvasLocation" x="3723" y="27"/>
         </scene>
     </scenes>
     <resources>
