@@ -1,37 +1,221 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ka7-Aa-FpS">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Chewy.ttf">
+            <string>Chewy-Regular</string>
+        </array>
+        <array key="LeagueSpartan.ttf">
+            <string>LeagueSpartan-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="6sK-ex-qzo">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Ka7-Aa-FpS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="swl-iJ-2tG">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="8zH-ji-9FT" kind="relationship" relationship="viewControllers" id="E5v-fy-3Yc"/>
+                        <segue destination="eVl-Se-pb0" kind="relationship" relationship="viewControllers" id="g20-Zx-55o"/>
+                        <segue destination="BV1-FR-VrT" kind="relationship" relationship="viewControllers" id="HL5-Sl-YLQ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PxG-dP-lhq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3724" y="-918"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="QD5-K8-TZq">
+            <objects>
+                <viewController title="Home" id="8zH-ji-9FT" customClass="HomeViewController" customModule="AR_Storybook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="68P-XK-znu">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeimg" translatesAutoresizingMaskIntoConstraints="NO" id="uHk-QW-eXg">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="MWt-cd-LMa" userLabel="titleCard">
+                                <rect key="frame" x="59" y="584.33333333333337" width="275" height="104.66666666666663"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Agk-ZV-E7q">
+                                        <rect key="frame" x="0.66666666666665719" y="0.0" width="274" height="77"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Storybook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXL-6o-t40">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="77"/>
+                                                <fontDescription key="fontDescription" name="Chewy-Regular" family="Chewy" pointSize="60"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCa-nO-QET">
+                                                <rect key="frame" x="247" y="0.0" width="27" height="32.333333333333336"/>
+                                                <fontDescription key="fontDescription" name="Chewy-Regular" family="Chewy" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNLOCK A NEW MAGICAL REALITY" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="8" translatesAutoresizingMaskIntoConstraints="NO" id="2CF-GC-kWa">
+                                        <rect key="frame" x="0.0" y="88" width="275" height="16.666666666666671"/>
+                                        <rect key="contentStretch" x="0.0" y="0.0" width="0.90000000000000002" height="1"/>
+                                        <fontDescription key="fontDescription" name="LeagueSpartan-SemiBold" family="League Spartan" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mbq-B6-w16"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uHk-QW-eXg" firstAttribute="top" secondItem="mbq-B6-w16" secondAttribute="top" id="FzI-2f-nbZ"/>
+                            <constraint firstItem="mbq-B6-w16" firstAttribute="trailing" secondItem="uHk-QW-eXg" secondAttribute="trailing" id="GOp-av-YqN"/>
+                            <constraint firstItem="mbq-B6-w16" firstAttribute="bottom" secondItem="MWt-cd-LMa" secondAttribute="bottom" constant="80" id="PUo-at-zBR"/>
+                            <constraint firstItem="uHk-QW-eXg" firstAttribute="leading" secondItem="mbq-B6-w16" secondAttribute="leading" id="ZsM-ED-aah"/>
+                            <constraint firstItem="mbq-B6-w16" firstAttribute="bottom" secondItem="uHk-QW-eXg" secondAttribute="bottom" id="lCc-8c-Bre"/>
+                            <constraint firstItem="MWt-cd-LMa" firstAttribute="centerX" secondItem="68P-XK-znu" secondAttribute="centerX" id="xpY-dL-a7t"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house.fill" id="FDv-ZY-je0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gT0-kK-UQg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2469.4656488549617" y="26.760563380281692"/>
+        </scene>
+        <!--Guide-->
+        <scene sceneID="6v8-o7-1Za">
+            <objects>
+                <viewController title="Guide" id="eVl-Se-pb0" customClass="GuideViewController" customModule="AR_Storybook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="bottom" id="ToM-x6-zXy">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guideimg" translatesAutoresizingMaskIntoConstraints="NO" id="x3i-K4-Y7J">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How To Use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bx0-e3-jSL">
+                                <rect key="frame" x="88" y="109" width="217" height="65"/>
+                                <fontDescription key="fontDescription" name="Chewy-Regular" family="Chewy" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1A-Xb-v8I">
+                                <rect key="frame" x="16" y="681" width="75" height="75"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="MLm-SG-WuR"/>
+                                    <constraint firstAttribute="width" constant="75" id="nEZ-gz-HRv"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="tertiarySystemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="speaker.wave.3" catalog="system"/>
+                                <connections>
+                                    <action selector="soundButtonPressed:" destination="eVl-Se-pb0" eventType="touchUpInside" id="rty-6M-2Zi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bUM-3k-Hrd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="x3i-K4-Y7J" firstAttribute="top" secondItem="bUM-3k-Hrd" secondAttribute="top" id="1FS-eD-oRq"/>
+                            <constraint firstItem="F1A-Xb-v8I" firstAttribute="top" secondItem="bUM-3k-Hrd" secondAttribute="top" constant="622" id="R0D-HH-LeN"/>
+                            <constraint firstItem="F1A-Xb-v8I" firstAttribute="leading" secondItem="ToM-x6-zXy" secondAttribute="leadingMargin" id="W8i-3o-fwW"/>
+                            <constraint firstItem="F1A-Xb-v8I" firstAttribute="leading" secondItem="bUM-3k-Hrd" secondAttribute="leading" constant="16" id="aAH-DO-YoG"/>
+                            <constraint firstItem="x3i-K4-Y7J" firstAttribute="leading" secondItem="bUM-3k-Hrd" secondAttribute="leading" id="dnY-jY-a4m"/>
+                            <constraint firstItem="bUM-3k-Hrd" firstAttribute="trailing" secondItem="x3i-K4-Y7J" secondAttribute="trailing" id="giQ-gZ-3Bb"/>
+                            <constraint firstItem="bUM-3k-Hrd" firstAttribute="bottom" secondItem="x3i-K4-Y7J" secondAttribute="bottom" id="qCM-HN-Qhl"/>
+                            <constraint firstItem="bx0-e3-jSL" firstAttribute="top" secondItem="bUM-3k-Hrd" secondAttribute="top" constant="50" id="swO-cn-QQE"/>
+                            <constraint firstItem="bx0-e3-jSL" firstAttribute="centerX" secondItem="ToM-x6-zXy" secondAttribute="centerX" id="u0h-dK-sbj"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Guide" image="g.square" catalog="system" selectedImage="g.square.fill" id="KKA-bK-L8a"/>
+                    <connections>
+                        <outlet property="soundButton" destination="F1A-Xb-v8I" id="GQM-dl-NWZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I91-BP-ola" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3723" y="27"/>
+        </scene>
+        <!--ARCamera-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ARCamera" id="BV1-FR-VrT" customClass="ARViewController" customModule="AR_Storybook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrB-h1-WRS">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="769"/>
                             </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cft-st-3nN">
+                                <rect key="frame" x="16" y="681" width="75" height="75"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="e8R-ou-pGv"/>
+                                    <constraint firstAttribute="width" constant="75" id="lm2-Kc-o3j"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="tertiarySystemBackgroundColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="speaker.wave.3" catalog="system"/>
+                                <connections>
+                                    <action selector="soundButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="y9s-4c-d2d"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="GsS-dJ-CKf"/>
+                            <constraint firstItem="cft-st-3nN" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="622" id="KAi-y9-IqI"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
-                            <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" id="rJc-2c-zQA"/>
+                            <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="topMargin" constant="-59" id="eaV-bW-ZVQ"/>
+                            <constraint firstItem="cft-st-3nN" firstAttribute="leading" secondItem="U0K-SW-4ec" secondAttribute="leadingMargin" id="hxu-X7-pWB"/>
+                            <constraint firstItem="cft-st-3nN" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="16" id="qIN-L3-TWu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Camera" image="camera" catalog="system" selectedImage="camera.fill" id="Kve-HF-Hdo"/>
                     <connections>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <outlet property="soundButton" destination="cft-st-3nN" id="7gG-0F-Qlc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="4977.8625954198469" y="26.760563380281692"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera" catalog="system" width="128" height="93"/>
+        <image name="camera.fill" catalog="system" width="128" height="93"/>
+        <image name="g.square" catalog="system" width="128" height="114"/>
+        <image name="g.square.fill" catalog="system" width="128" height="114"/>
+        <image name="guideimg" width="414" height="869"/>
+        <image name="homeimg" width="414" height="808"/>
+        <image name="house" catalog="system" width="128" height="104"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
+        <image name="speaker.wave.3" catalog="system" width="128" height="84"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
