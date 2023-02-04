@@ -59,54 +59,42 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Is the anchor an image?
         if let imageAnchor = anchor as? ARImageAnchor{
-            let plane = SCNPlane(
-                width: imageAnchor.referenceImage.physicalSize.width,
-                height: imageAnchor.referenceImage.physicalSize.height
-            )
-            plane.firstMaterial?.diffuse.contents = UIColor(white: 1.0, alpha: 0.0)
-            
-            let planeNode = SCNNode(geometry: plane)
-            planeNode.eulerAngles.x = -.pi / 2
-            
-            node.addChildNode(planeNode)
-            
             if imageAnchor.referenceImage.name == "BookCover" {
-                if let eleScene = SCNScene(named: "art.scnassets/Gerald_Cover.scn"){
-                    if let eleNode = eleScene.rootNode.childNodes.first{
-                        eleNode.eulerAngles.x = .pi
-                        planeNode.addChildNode(eleNode)
-                    }
-                }
-                if let pigScene = SCNScene(named: "art.scnassets/Piggie_Cover.scn"){
-                    if let pigNode = pigScene.rootNode.childNodes.first{
-                        pigNode.eulerAngles.x = .pi
-                        planeNode.addChildNode(pigNode)
-                    }
-                }
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_cover.scn")!
+                
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_01", recursively: false)!
+                eleNode.eulerAngles = SCNVector3(.pi/2, -.pi/4.0, 0.0)
+                eleNode.worldPosition = SCNVector3(-0.026, 0.0, 0.06)
+                node.addChildNode(eleNode)
+                
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_01", recursively: false)!
+                pigNode.eulerAngles = SCNVector3(.pi/2, 0.0, 0.0)
+                pigNode.worldPosition = SCNVector3(0.05, 0.0, 0.08)
+                node.addChildNode(pigNode)
             } else if imageAnchor.referenceImage.name == "page2" {
                 if let eleScene = SCNScene(named: "art.scnassets/Gerald_02.scn"){
                     if let eleNode = eleScene.rootNode.childNodes.first{
                         eleNode.eulerAngles.x = .pi
-                        planeNode.addChildNode(eleNode)
+                        node.addChildNode(eleNode)
                     }
                 }
                 if let pigScene = SCNScene(named: "art.scnassets/Piggie_02.scn"){
                     if let pigNode = pigScene.rootNode.childNodes.first{
                         pigNode.eulerAngles.x = .pi
-                        planeNode.addChildNode(pigNode)
+                        node.addChildNode(pigNode)
                     }
                 }
             } else if imageAnchor.referenceImage.name == "page3" {
                 if let eleScene = SCNScene(named: "art.scnassets/Gerald_03.scn"){
                     if let eleNode = eleScene.rootNode.childNodes.first{
                         eleNode.eulerAngles.x = .pi
-                        planeNode.addChildNode(eleNode)
+                        node.addChildNode(eleNode)
                     }
                 }
                 if let pigScene = SCNScene(named: "art.scnassets/Piggie_03.scn"){
                     if let pigNode = pigScene.rootNode.childNodes.first{
                         pigNode.eulerAngles.x = .pi
-                        planeNode.addChildNode(pigNode)
+                        node.addChildNode(pigNode)
                     }
                 }
             }
