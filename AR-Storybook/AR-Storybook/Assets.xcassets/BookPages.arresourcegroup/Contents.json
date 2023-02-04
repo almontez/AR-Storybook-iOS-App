@@ -6,6 +6,12 @@
   "resources" : [
     {
       "filename" : "BookCover.arreferenceimage"
+    },
+    {
+      "filename" : "page2.arreferenceimage"
+    },
+    {
+      "filename" : "page3.arreferenceimage"
     }
   ]
 }
