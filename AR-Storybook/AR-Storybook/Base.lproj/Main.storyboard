@@ -135,6 +135,7 @@
                             <constraint firstItem="F1A-Xb-v8I" firstAttribute="leading" secondItem="bUM-3k-Hrd" secondAttribute="leading" constant="16" id="aAH-DO-YoG"/>
                             <constraint firstItem="x3i-K4-Y7J" firstAttribute="leading" secondItem="bUM-3k-Hrd" secondAttribute="leading" id="dnY-jY-a4m"/>
                             <constraint firstItem="bUM-3k-Hrd" firstAttribute="trailing" secondItem="x3i-K4-Y7J" secondAttribute="trailing" id="giQ-gZ-3Bb"/>
+                            <constraint firstItem="F1A-Xb-v8I" firstAttribute="leading" secondItem="bUM-3k-Hrd" secondAttribute="leading" constant="16" id="glB-ZY-SAI"/>
                             <constraint firstItem="bUM-3k-Hrd" firstAttribute="bottom" secondItem="x3i-K4-Y7J" secondAttribute="bottom" id="qCM-HN-Qhl"/>
                             <constraint firstItem="bx0-e3-jSL" firstAttribute="top" secondItem="bUM-3k-Hrd" secondAttribute="top" constant="50" id="swO-cn-QQE"/>
                             <constraint firstItem="bx0-e3-jSL" firstAttribute="centerX" secondItem="ToM-x6-zXy" secondAttribute="centerX" id="u0h-dK-sbj"/>
@@ -182,6 +183,7 @@
                             <constraint firstItem="cft-st-3nN" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="622" id="KAi-y9-IqI"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="bottom" secondItem="fQZ-KI-GVf" secondAttribute="bottom" id="VpT-BR-CcM"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="trailing" secondItem="fQZ-KI-GVf" secondAttribute="trailing" id="XyZ-9z-H8e"/>
+                            <constraint firstItem="cft-st-3nN" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="16" id="Za9-4Y-ppn"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="topMargin" constant="-59" id="eaV-bW-ZVQ"/>
                             <constraint firstItem="cft-st-3nN" firstAttribute="leading" secondItem="U0K-SW-4ec" secondAttribute="leadingMargin" id="hxu-X7-pWB"/>
                             <constraint firstItem="cft-st-3nN" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="16" id="qIN-L3-TWu"/>
