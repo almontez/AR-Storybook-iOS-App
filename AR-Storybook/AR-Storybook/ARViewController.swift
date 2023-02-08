@@ -75,7 +75,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             
             node.addChildNode(planeNode)
             
-            if imageAnchor.referenceImage.name == "BookCover" {
+            switch imageAnchor.referenceImage.name{
+            case "BookCover":
                 if let eleScene = SCNScene(named: "art.scnassets/Gerald_Cover.scn"){
                     if let eleNode = eleScene.rootNode.childNodes.first{
                         eleNode.eulerAngles.x = .pi
@@ -88,7 +89,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                         planeNode.addChildNode(pigNode)
                     }
                 }
-            } else if imageAnchor.referenceImage.name == "page2" {
+            case "page2":
                 if let eleScene = SCNScene(named: "art.scnassets/Gerald_02.scn"){
                     if let eleNode = eleScene.rootNode.childNodes.first{
                         eleNode.eulerAngles.x = .pi
@@ -101,7 +102,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                         planeNode.addChildNode(pigNode)
                     }
                 }
-            } else if imageAnchor.referenceImage.name == "page3" {
+            case "page3":
                 if let eleScene = SCNScene(named: "art.scnassets/Gerald_03.scn"){
                     if let eleNode = eleScene.rootNode.childNodes.first{
                         eleNode.eulerAngles.x = .pi
@@ -114,7 +115,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                         planeNode.addChildNode(pigNode)
                     }
                 }
+            default:
+                print("Page not found")
             }
+            
         }
         
         return node
