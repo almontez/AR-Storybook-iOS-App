@@ -10,6 +10,7 @@
     "version" : 1
   },
   "properties" : {
-    "width" : 6.5857601026298918
+    "unit" : "inches",
+    "width" : 5.6651699807568958
   }
 }
