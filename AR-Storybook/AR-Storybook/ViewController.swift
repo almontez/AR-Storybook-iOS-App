@@ -43,6 +43,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
         // Run the view's session
         sceneView.session.run(configuration)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,6 +57,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let node = SCNNode()
+        node.eulerAngles.x = .pi/2.0
         
         // Is the anchor an image?
         if let imageAnchor = anchor as? ARImageAnchor{
@@ -63,40 +65,38 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_cover.scn")!
                 
                 let eleNode = modelScene.rootNode.childNode(withName: "Gerald_01", recursively: false)!
-                eleNode.eulerAngles = SCNVector3(.pi/2, -.pi/4.0, 0.0)
+                eleNode.eulerAngles.y = -.pi/4.0
                 eleNode.worldPosition = SCNVector3(-0.026, 0.0, 0.06)
                 node.addChildNode(eleNode)
                 
                 let pigNode = modelScene.rootNode.childNode(withName: "Piggie_01", recursively: false)!
-                pigNode.eulerAngles = SCNVector3(.pi/2, 0.0, 0.0)
                 pigNode.worldPosition = SCNVector3(0.05, 0.0, 0.08)
                 node.addChildNode(pigNode)
+                
+                node.name = "Cover"
+                
             } else if imageAnchor.referenceImage.name == "page2" {
-                if let eleScene = SCNScene(named: "art.scnassets/Gerald_02.scn"){
-                    if let eleNode = eleScene.rootNode.childNodes.first{
-                        eleNode.eulerAngles.x = .pi
-                        node.addChildNode(eleNode)
-                    }
-                }
-                if let pigScene = SCNScene(named: "art.scnassets/Piggie_02.scn"){
-                    if let pigNode = pigScene.rootNode.childNodes.first{
-                        pigNode.eulerAngles.x = .pi
-                        node.addChildNode(pigNode)
-                    }
-                }
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg02.scn")!
+                
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_02", recursively: false)!
+                node.addChildNode(eleNode)
+                
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_02", recursively: false)!
+                node.addChildNode(pigNode)
+                
+                node.name = "Page2"
+                
             } else if imageAnchor.referenceImage.name == "page3" {
-                if let eleScene = SCNScene(named: "art.scnassets/Gerald_03.scn"){
-                    if let eleNode = eleScene.rootNode.childNodes.first{
-                        eleNode.eulerAngles.x = .pi
-                        node.addChildNode(eleNode)
-                    }
-                }
-                if let pigScene = SCNScene(named: "art.scnassets/Piggie_03.scn"){
-                    if let pigNode = pigScene.rootNode.childNodes.first{
-                        pigNode.eulerAngles.x = .pi
-                        node.addChildNode(pigNode)
-                    }
-                }
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg03.scn")!
+                
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_03", recursively: false)!
+                node.addChildNode(eleNode)
+                
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_03", recursively: false)!
+                node.addChildNode(pigNode)
+                
+                node.name = "Page3"
+
             }
         }
         
