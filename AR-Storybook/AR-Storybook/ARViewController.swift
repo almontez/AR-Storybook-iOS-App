@@ -15,6 +15,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var soundButton: UIButton!
     
+    // Information of the current page
+    var currentAnchor : ARAnchor!
+    var currentNode : SCNNode!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +46,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             
             configuration.trackingImages = imageToTrack
             // If using WorldTracking, use configuration.detectionImages instead
-            configuration.maximumNumberOfTrackedImages = 2
+            configuration.maximumNumberOfTrackedImages = 1
             
         }
 
@@ -66,170 +70,145 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         // Is the anchor an image?
         if let imageAnchor = anchor as? ARImageAnchor{
-            let plane = SCNPlane(
-                width: imageAnchor.referenceImage.physicalSize.width,
-                height: imageAnchor.referenceImage.physicalSize.height
-            )
-            plane.firstMaterial?.diffuse.contents = UIColor(white: 1.0, alpha: 0.0)
-            
-            let planeNode = SCNNode(geometry: plane)
-            planeNode.eulerAngles.x = -.pi / 2
-            
-            node.addChildNode(planeNode)
             
             switch imageAnchor.referenceImage.name{
             case "BookCover":
-                if let eleScene = SCNScene(named: "art.scnassets/Gerald_Cover.scn"){
-                    if let eleNode = eleScene.rootNode.childNodes.first{
-                        eleNode.eulerAngles.x = .pi
-                        planeNode.addChildNode(eleNode)
-                    }
-                }
-                if let pigScene = SCNScene(named: "art.scnassets/Piggie_Cover.scn"){
-                    if let pigNode = pigScene.rootNode.childNodes.first{
-                        pigNode.eulerAngles.x = .pi
-                        planeNode.addChildNode(pigNode)
-                    }
-                }
+                clearCurrent()
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_cover.scn")!
+
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_01", recursively: false)!
+                eleNode.eulerAngles.y = -.pi/4.0
+                eleNode.worldPosition = SCNVector3(-0.026, 0.0, 0.06)
+                node.addChildNode(eleNode)
+
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_01", recursively: false)!
+                pigNode.worldPosition = SCNVector3(0.05, 0.0, 0.08)
+                node.addChildNode(pigNode)
+
+                node.name = imageAnchor.referenceImage.name
+                currentNode = node
+                currentAnchor = anchor
+                print("Cover detected")
             case "page2":
-                if let eleScene = SCNScene(named: "art.scnassets/Gerald_02.scn"){
-                    if let eleNode = eleScene.rootNode.childNodes.first{
-                        eleNode.eulerAngles.x = .pi
-                        planeNode.addChildNode(eleNode)
-                    }
-                }
-                if let pigScene = SCNScene(named: "art.scnassets/Piggie_02.scn"){
-                    if let pigNode = pigScene.rootNode.childNodes.first{
-                        pigNode.eulerAngles.x = .pi
-                        planeNode.addChildNode(pigNode)
-                    }
-                }
+                clearCurrent()
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg02.scn")!
+
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_02", recursively: false)!
+                node.addChildNode(eleNode)
+
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_02", recursively: false)!
+                node.addChildNode(pigNode)
+
+                node.name = imageAnchor.referenceImage.name
+                currentNode = node
+                currentAnchor = anchor
+                print("Page 2 detected")
             case "page3":
-                if let eleScene = SCNScene(named: "art.scnassets/Gerald_03.scn"){
-                    if let eleNode = eleScene.rootNode.childNodes.first{
-                        eleNode.eulerAngles.x = .pi
-                        planeNode.addChildNode(eleNode)
-                    }
-                }
-                if let pigScene = SCNScene(named: "art.scnassets/Piggie_03.scn"){
-                    if let pigNode = pigScene.rootNode.childNodes.first{
-                        pigNode.eulerAngles.x = .pi
-                        planeNode.addChildNode(pigNode)
-                    }
-                }
-                
+                clearCurrent()
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg03.scn")!
+
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_03", recursively: false)!
+                node.addChildNode(eleNode)
+
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_03", recursively: false)!
+                node.addChildNode(pigNode)
+
+                node.name = imageAnchor.referenceImage.name
+                currentNode = node
+                currentAnchor = anchor
+                print("Page 3 detected")
             case "page11":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg11.scn")!
                 
                 let eleNode = modelScene.rootNode.childNode(withName: "Gerald_11", recursively: false)!
-                eleNode.eulerAngles.x = .pi
-                planeNode.addChildNode(eleNode)
+                node.addChildNode(eleNode)
                 
                 let pigNode = modelScene.rootNode.childNode(withName: "Piggie_11", recursively: false)!
-                pigNode.eulerAngles.x = .pi
-                planeNode.addChildNode(pigNode)
+                node.addChildNode(pigNode)
                 
             case "page12":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg12.scn")!
                 
                 let eleNode = modelScene.rootNode.childNode(withName: "Gerald_12", recursively: false)!
-                eleNode.eulerAngles.x = .pi
-                planeNode.addChildNode(eleNode)
+                node.addChildNode(eleNode)
                 
                 let pigNode = modelScene.rootNode.childNode(withName: "Piggie_12", recursively: false)!
-                pigNode.eulerAngles.x = .pi
-                planeNode.addChildNode(pigNode)
+                node.addChildNode(pigNode)
             
             case "page13":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg13.scn")!
                 
                 let eleNode = modelScene.rootNode.childNode(withName: "Gerald_13", recursively: false)!
-                eleNode.eulerAngles.x = .pi
-                planeNode.addChildNode(eleNode)
+                node.addChildNode(eleNode)
                 
                 let pigNode = modelScene.rootNode.childNode(withName: "Piggie_13", recursively: false)!
-                pigNode.eulerAngles.x = .pi
-                planeNode.addChildNode(pigNode)
+                node.addChildNode(pigNode)
 
             case "page14":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg14.scn")!
                 
                 let eleNode = modelScene.rootNode.childNode(withName: "Gerald_14", recursively: false)!
-                eleNode.eulerAngles.x = .pi
-                planeNode.addChildNode(eleNode)
+                node.addChildNode(eleNode)
                 
                 let pigNode = modelScene.rootNode.childNode(withName: "Piggie_14", recursively: false)!
-                pigNode.eulerAngles.x = .pi
-                planeNode.addChildNode(pigNode)
+                node.addChildNode(pigNode)
             
             case "page15":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg15.scn")!
                 
                 let eleNode = modelScene.rootNode.childNode(withName: "Gerald_15", recursively: false)!
-                eleNode.eulerAngles.x = .pi
-                planeNode.addChildNode(eleNode)
+                node.addChildNode(eleNode)
                 
                 let pigNode = modelScene.rootNode.childNode(withName: "Piggie_15", recursively: false)!
-                pigNode.eulerAngles.x = .pi
-                planeNode.addChildNode(pigNode)
+                node.addChildNode(pigNode)
             
             case "page16":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg16.scn")!
                 
                 let eleNode = modelScene.rootNode.childNode(withName: "Gerald_16", recursively: false)!
-                eleNode.eulerAngles.x = .pi
-                planeNode.addChildNode(eleNode)
+                node.addChildNode(eleNode)
                 
                 let pigNode = modelScene.rootNode.childNode(withName: "Piggie_16", recursively: false)!
-                pigNode.eulerAngles.x = .pi
-                planeNode.addChildNode(pigNode)
+                node.addChildNode(pigNode)
                 
             case "page17":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg17.scn")!
                 
                 let eleNode = modelScene.rootNode.childNode(withName: "Gerald_17", recursively: false)!
-                eleNode.eulerAngles.x = .pi
-                planeNode.addChildNode(eleNode)
+                node.addChildNode(eleNode)
                 
                 let pigNode = modelScene.rootNode.childNode(withName: "Piggie_17", recursively: false)!
-                pigNode.eulerAngles.x = .pi
-                planeNode.addChildNode(pigNode)
+                node.addChildNode(pigNode)
             
             case "page18":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg18.scn")!
                 
                 let eleNode = modelScene.rootNode.childNode(withName: "Gerald_18", recursively: false)!
-                eleNode.eulerAngles.x = .pi
-                planeNode.addChildNode(eleNode)
+                node.addChildNode(eleNode)
             
             case "page19":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg19.scn")!
                 
                 let pigNode = modelScene.rootNode.childNode(withName: "Piggie_19", recursively: false)!
-                pigNode.eulerAngles.x = .pi
-                planeNode.addChildNode(pigNode)
+                node.addChildNode(pigNode)
             
             case "page20":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg20.scn")!
                 
                 let eleNode = modelScene.rootNode.childNode(withName: "Gerald_20", recursively: false)!
-                eleNode.eulerAngles.x = .pi
-                planeNode.addChildNode(eleNode)
+                node.addChildNode(eleNode)
                 
                 let pigNode = modelScene.rootNode.childNode(withName: "Piggie_20", recursively: false)!
-                pigNode.eulerAngles.x = .pi
-                planeNode.addChildNode(pigNode)
+                node.addChildNode(pigNode)
             
             case "page21":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg21.scn")!
                 
                 let eleNode = modelScene.rootNode.childNode(withName: "Gerald_21", recursively: false)!
-                eleNode.eulerAngles.x = .pi
-                planeNode.addChildNode(eleNode)
+                node.addChildNode(eleNode)
                 
                 let pigNode = modelScene.rootNode.childNode(withName: "Piggie_21", recursively: false)!
-                pigNode.eulerAngles.x = .pi
-                planeNode.addChildNode(pigNode)
+                node.addChildNode(pigNode)
                 
             default:
                 print("Page not found")
@@ -237,6 +216,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         }
         
         return node
+    }
+    
+    func clearCurrent(){
+        if currentAnchor != nil{
+            sceneView.session.remove(anchor: currentAnchor)
+        }
     }
     
     // MARK: - UI Functionalities
