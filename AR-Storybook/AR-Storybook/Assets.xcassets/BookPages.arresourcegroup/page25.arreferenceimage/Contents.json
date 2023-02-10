@@ -1,0 +1,16 @@
+{
+  "images" : [
+    {
+      "filename" : "page25.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "unit" : "inches",
+    "width" : 5.8095590959614674
+  }
+}

@@ -66,42 +66,173 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         // Is the anchor an image?
         if let imageAnchor = anchor as? ARImageAnchor{
-            if imageAnchor.referenceImage.name == "BookCover" {
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_cover.scn")!
+            let plane = SCNPlane(
+                width: imageAnchor.referenceImage.physicalSize.width,
+                height: imageAnchor.referenceImage.physicalSize.height
+            )
+            plane.firstMaterial?.diffuse.contents = UIColor(white: 1.0, alpha: 0.0)
+            
+            let planeNode = SCNNode(geometry: plane)
+            planeNode.eulerAngles.x = -.pi / 2
+            
+            node.addChildNode(planeNode)
+            
+            switch imageAnchor.referenceImage.name{
+            case "BookCover":
+                if let eleScene = SCNScene(named: "art.scnassets/Gerald_Cover.scn"){
+                    if let eleNode = eleScene.rootNode.childNodes.first{
+                        eleNode.eulerAngles.x = .pi
+                        planeNode.addChildNode(eleNode)
+                    }
+                }
+                if let pigScene = SCNScene(named: "art.scnassets/Piggie_Cover.scn"){
+                    if let pigNode = pigScene.rootNode.childNodes.first{
+                        pigNode.eulerAngles.x = .pi
+                        planeNode.addChildNode(pigNode)
+                    }
+                }
+            case "page2":
+                if let eleScene = SCNScene(named: "art.scnassets/Gerald_02.scn"){
+                    if let eleNode = eleScene.rootNode.childNodes.first{
+                        eleNode.eulerAngles.x = .pi
+                        planeNode.addChildNode(eleNode)
+                    }
+                }
+                if let pigScene = SCNScene(named: "art.scnassets/Piggie_02.scn"){
+                    if let pigNode = pigScene.rootNode.childNodes.first{
+                        pigNode.eulerAngles.x = .pi
+                        planeNode.addChildNode(pigNode)
+                    }
+                }
+            case "page3":
+                if let eleScene = SCNScene(named: "art.scnassets/Gerald_03.scn"){
+                    if let eleNode = eleScene.rootNode.childNodes.first{
+                        eleNode.eulerAngles.x = .pi
+                        planeNode.addChildNode(eleNode)
+                    }
+                }
+                if let pigScene = SCNScene(named: "art.scnassets/Piggie_03.scn"){
+                    if let pigNode = pigScene.rootNode.childNodes.first{
+                        pigNode.eulerAngles.x = .pi
+                        planeNode.addChildNode(pigNode)
+                    }
+                }
                 
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_01", recursively: false)!
-                eleNode.eulerAngles.y = -.pi/4.0
-                eleNode.worldPosition = SCNVector3(-0.026, 0.0, 0.06)
-                node.addChildNode(eleNode)
+            case "page11":
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg11.scn")!
                 
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_01", recursively: false)!
-                pigNode.worldPosition = SCNVector3(0.05, 0.0, 0.08)
-                node.addChildNode(pigNode)
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_11", recursively: false)!
+                eleNode.eulerAngles.x = .pi
+                planeNode.addChildNode(eleNode)
                 
-                node.name = "Cover"
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_11", recursively: false)!
+                pigNode.eulerAngles.x = .pi
+                planeNode.addChildNode(pigNode)
                 
-            } else if imageAnchor.referenceImage.name == "page2" {
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg02.scn")!
+            case "page12":
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg12.scn")!
                 
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_02", recursively: false)!
-                node.addChildNode(eleNode)
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_12", recursively: false)!
+                eleNode.eulerAngles.x = .pi
+                planeNode.addChildNode(eleNode)
                 
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_02", recursively: false)!
-                node.addChildNode(pigNode)
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_12", recursively: false)!
+                pigNode.eulerAngles.x = .pi
+                planeNode.addChildNode(pigNode)
+            
+            case "page13":
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg13.scn")!
                 
-                node.name = "Page2"
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_13", recursively: false)!
+                eleNode.eulerAngles.x = .pi
+                planeNode.addChildNode(eleNode)
                 
-            } else if imageAnchor.referenceImage.name == "page3" {
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg03.scn")!
-                
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_03", recursively: false)!
-                node.addChildNode(eleNode)
-                
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_03", recursively: false)!
-                node.addChildNode(pigNode)
-                
-                node.name = "Page3"
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_13", recursively: false)!
+                pigNode.eulerAngles.x = .pi
+                planeNode.addChildNode(pigNode)
 
+            case "page14":
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg14.scn")!
+                
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_14", recursively: false)!
+                eleNode.eulerAngles.x = .pi
+                planeNode.addChildNode(eleNode)
+                
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_14", recursively: false)!
+                pigNode.eulerAngles.x = .pi
+                planeNode.addChildNode(pigNode)
+            
+            case "page15":
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg15.scn")!
+                
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_15", recursively: false)!
+                eleNode.eulerAngles.x = .pi
+                planeNode.addChildNode(eleNode)
+                
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_15", recursively: false)!
+                pigNode.eulerAngles.x = .pi
+                planeNode.addChildNode(pigNode)
+            
+            case "page16":
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg16.scn")!
+                
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_16", recursively: false)!
+                eleNode.eulerAngles.x = .pi
+                planeNode.addChildNode(eleNode)
+                
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_16", recursively: false)!
+                pigNode.eulerAngles.x = .pi
+                planeNode.addChildNode(pigNode)
+                
+            case "page17":
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg17.scn")!
+                
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_17", recursively: false)!
+                eleNode.eulerAngles.x = .pi
+                planeNode.addChildNode(eleNode)
+                
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_17", recursively: false)!
+                pigNode.eulerAngles.x = .pi
+                planeNode.addChildNode(pigNode)
+            
+            case "page18":
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg18.scn")!
+                
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_18", recursively: false)!
+                eleNode.eulerAngles.x = .pi
+                planeNode.addChildNode(eleNode)
+            
+            case "page19":
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg19.scn")!
+                
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_19", recursively: false)!
+                pigNode.eulerAngles.x = .pi
+                planeNode.addChildNode(pigNode)
+            
+            case "page20":
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg20.scn")!
+                
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_20", recursively: false)!
+                eleNode.eulerAngles.x = .pi
+                planeNode.addChildNode(eleNode)
+                
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_20", recursively: false)!
+                pigNode.eulerAngles.x = .pi
+                planeNode.addChildNode(pigNode)
+            
+            case "page21":
+                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg21.scn")!
+                
+                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_21", recursively: false)!
+                eleNode.eulerAngles.x = .pi
+                planeNode.addChildNode(eleNode)
+                
+                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_21", recursively: false)!
+                pigNode.eulerAngles.x = .pi
+                planeNode.addChildNode(pigNode)
+                
+            default:
+                print("Page not found")
             }
         }
         
