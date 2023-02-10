@@ -312,7 +312,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2J59W23G3R;
+				DEVELOPMENT_TEAM = 5TN6PGGTDY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "AR-Storybook/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -345,7 +345,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2J59W23G3R;
+				DEVELOPMENT_TEAM = 5TN6PGGTDY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "AR-Storybook/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
