@@ -9,11 +9,13 @@
 import UIKit
 import SceneKit
 import ARKit
+import AVFoundation
 
 class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var soundButton: UIButton!
+    
     
     // Information of the current page
     var currentAnchor : ARImageAnchor!
@@ -22,6 +24,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     var currentRotationOffset : Float = 0.0
     // Whether to constrain the model to the camera
     var lookAtCamera = false
+    // Create and initialize the AVAudioPlayer object
+    var player: AVAudioPlayer!
+    // File name of a page's corresponding audio
+    var fileName = ""
     
     // Light
     let lightSource = SCNLight()
@@ -123,6 +129,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
 
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "Cover"
             case "page2":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg02.scn")!
 
@@ -134,9 +141,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 
                 lookAtCamera = true
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page2"
             case "page3":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg03.scn")!
-
+                
                 let eleNode = modelScene.rootNode.childNode(withName: "Gerald_03", recursively: false)!
                 node.addChildNode(eleNode)
 
@@ -145,6 +153,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
                 lookAtCamera = true
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page3"
             case "page4":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg04.scn")!
 
@@ -155,6 +164,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
 
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page4"
             case "page5":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg05.scn")!
 
@@ -165,6 +175,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
 
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page5"
             case "page6":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg06.scn")!
 
@@ -175,6 +186,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
 
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page6"
             case "page7":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg07.scn")!
 
@@ -185,6 +197,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
 
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = ""
             case "page8":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg08.scn")!
 
@@ -195,6 +208,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
 
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page8"
             case "page9":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg09.scn")!
 
@@ -205,6 +219,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
 
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page9"
             case "page10":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg10.scn")!
 
@@ -215,6 +230,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
 
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page10"
             case "page11":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg11.scn")!
                 
@@ -225,6 +241,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
                 
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page11"
             case "page12":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg12.scn")!
                 
@@ -235,6 +252,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
             
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page12"
             case "page13":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg13.scn")!
                 
@@ -245,6 +263,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
 
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page13"
             case "page14":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg14.scn")!
                 
@@ -255,6 +274,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
             
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page14"
             case "page15":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg15.scn")!
                 
@@ -265,6 +285,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
             
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page15"
             case "page16":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg16.scn")!
                 
@@ -275,6 +296,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
                 
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page16"
             case "page17":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg17.scn")!
                 
@@ -285,6 +307,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
             
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page17"
             case "page18":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg18.scn")!
                 
@@ -292,6 +315,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(eleNode)
             
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page18_19"
             case "page19":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg19.scn")!
                 
@@ -299,6 +323,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
             
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page18_19"
             case "page20":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg20.scn")!
                 
@@ -309,6 +334,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
             
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page20"
             case "page21":
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg21.scn")!
                 
@@ -319,6 +345,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(pigNode)
                 
                 updatePage(node: node, imageAnchor: imageAnchor)
+                fileName = "page21"
             default:
                 print("Page not found")
             }
@@ -340,6 +367,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         // Reset look-at variables
         lookAtCamera = false
         currentRotationOffset = 0.0
+        // Reset fileName variable to empty string
+        fileName = ""
     }
     
     // Save information about the current page
@@ -352,6 +381,20 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     // MARK: - UI Functionalities
     
     @IBAction func soundButtonPressed(_ sender: UIButton) {
-        print("AR View Sound Button Pressed")
+        if fileName != "" {
+            let url = Bundle.main.url(forResource: fileName, withExtension: "m4a")
+            
+            // Do not do anything if the url is empty
+            guard url != nil else {
+                return
+            }
+            
+            do {
+                player = try AVAudioPlayer(contentsOf:url!)
+                player?.play()
+            } catch {
+                print("Error: Cannot play the audio.")
+            }
+        }
     }
 }
