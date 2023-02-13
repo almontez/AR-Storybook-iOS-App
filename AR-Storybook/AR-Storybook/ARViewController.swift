@@ -94,7 +94,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             if sceneView.session.currentFrame!.lightEstimate != nil{
                 lightTemp = sceneView.session.currentFrame!.lightEstimate!.ambientColorTemperature
                 lightSource.temperature = lightTemp
-                print(lightTemp!)
+                print("Color Temp: \(lightTemp!)")
             }
         }
     }
