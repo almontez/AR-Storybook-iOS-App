@@ -312,7 +312,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2J59W23G3R;
+				DEVELOPMENT_TEAM = 5TN6PGGTDY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "AR-Storybook/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -328,7 +328,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = alm.arstory;
+				PRODUCT_BUNDLE_IDENTIFIER = com.changarrickt.arstorybook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -345,7 +345,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2J59W23G3R;
+				DEVELOPMENT_TEAM = 5TN6PGGTDY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "AR-Storybook/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -361,7 +361,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = alm.arstory;
+				PRODUCT_BUNDLE_IDENTIFIER = com.changarrickt.arstorybook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
