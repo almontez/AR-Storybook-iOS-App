@@ -23,6 +23,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     // Whether to constrain the model to the camera
     var lookAtCamera = false
     
+    // Light
+    let lightSource = SCNLight()
+    // Ambient light color
+    var lightTemp : CGFloat!
+    
+    // Runs once when the session loads
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +42,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
 //        sceneView.showsStatistics = true
         
+        lightSource.type = .ambient
         sceneView.autoenablesDefaultLighting = true
     }
     
@@ -57,6 +64,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         // Run the view's session
         sceneView.session.run(configuration)
         
+        // Add the light to the scene
+        let lightNode = SCNNode()
+        lightNode.light = lightSource
+        sceneView.scene.rootNode.addChildNode(lightNode)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,25 +79,28 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     // MARK: - ARSCNViewDelegate
     
+    // Runs once per frame
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         if lookAtCamera && currentNode != nil{
             currentNode.eulerAngles.y = -sceneView.session.currentFrame!.camera.eulerAngles.y + currentRotationOffset
         }
-    }
-    
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        print("--Nodes--")
-        for n in sceneView.scene.rootNode.childNodes{
-            if n.name != nil{
-                print(n.name!)
+        if sceneView.session.currentFrame != nil{
+            if sceneView.session.currentFrame!.lightEstimate != nil{
+                lightTemp = sceneView.session.currentFrame!.lightEstimate!.ambientColorTemperature
+                lightSource.temperature = lightTemp
+                print(lightTemp!)
             }
         }
-        print("---------")
+    }
+    
+    // Runs everytime a node is added to the scene
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if lookAtCamera{
             currentRotationOffset = currentNode.eulerAngles.y
         }
     }
     
+    // Runs once per recognized image
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let node = SCNNode()
         node.eulerAngles.x = .pi/2.0
@@ -313,6 +327,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         return node
     }
     
+    // Reset current page info when a different page is detected
     func clearPage(){
         // Removes the current anchor so it can be added again later
         if currentAnchor != nil{
@@ -327,11 +342,11 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         currentRotationOffset = 0.0
     }
     
+    // Save information about the current page
     func updatePage(node: SCNNode, imageAnchor: ARImageAnchor){
         node.name = imageAnchor.referenceImage.name
         currentNode = node
         currentAnchor = imageAnchor
-        print("\(node.name!) detected")
     }
     
     // MARK: - UI Functionalities
