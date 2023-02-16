@@ -123,6 +123,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="speaker.wave.3" catalog="system"/>
                                 <connections>
                                     <action selector="soundButtonPressed:" destination="eVl-Se-pb0" eventType="touchUpInside" id="rty-6M-2Zi"/>
+                                    <action selector="soundButtonPressedDown:" destination="eVl-Se-pb0" eventType="touchDown" id="7NF-Lj-Vme"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -172,6 +173,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="speaker.wave.3" catalog="system"/>
                                 <connections>
                                     <action selector="soundButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="y9s-4c-d2d"/>
+                                    <action selector="soundButtonPressedDown:" destination="BV1-FR-VrT" eventType="touchDown" id="PTU-RF-VGu"/>
                                 </connections>
                             </button>
                         </subviews>
