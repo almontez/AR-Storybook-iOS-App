@@ -94,7 +94,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             if sceneView.session.currentFrame!.lightEstimate != nil{
                 lightTemp = sceneView.session.currentFrame!.lightEstimate!.ambientColorTemperature
                 lightSource.temperature = lightTemp
-                print("Color Temp: \(lightTemp!)")
+                //print("Color Temp: \(lightTemp!)")
             }
         }
     }
@@ -115,8 +115,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         if let imageAnchor = anchor as? ARImageAnchor{
             
             clearPage()
-            switch imageAnchor.referenceImage.name{
-            case "BookCover":
+            
+            if imageAnchor.referenceImage.name == "BookCover" {
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_cover.scn")!
 
                 let eleNode = modelScene.rootNode.childNode(withName: "Gerald_01", recursively: false)!
@@ -130,225 +130,43 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
                 updatePage(node: node, imageAnchor: imageAnchor)
                 fileName = "Cover"
-            case "page2":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg02.scn")!
-
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_02", recursively: false)!
-                node.addChildNode(eleNode)
-
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_02", recursively: false)!
-                node.addChildNode(pigNode)
+            } else {
+                // else branch used for numbered paths
                 
-                lookAtCamera = true
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page2"
-            case "page3":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg03.scn")!
+                // partial paths
+                var modelPath = "art.scnassets/Models/mesh_pg"
+                var elePath = "Gerald_"
+                var pigPath = "Piggie_"
+                var audioPath = "page"
                 
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_03", recursively: false)!
-                node.addChildNode(eleNode)
-
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_03", recursively: false)!
-                node.addChildNode(pigNode)
-
-                lookAtCamera = true
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page3"
-            case "page4":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg04.scn")!
-
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_04", recursively: false)!
-                node.addChildNode(eleNode)
-
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_04", recursively: false)!
-                node.addChildNode(pigNode)
-
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page4"
-            case "page5":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg05.scn")!
-
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_05", recursively: false)!
-                node.addChildNode(eleNode)
-
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_05", recursively: false)!
-                node.addChildNode(pigNode)
-
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page5"
-            case "page6":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg06.scn")!
-
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_06", recursively: false)!
-                node.addChildNode(eleNode)
-
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_06", recursively: false)!
-                node.addChildNode(pigNode)
-
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page6"
-            case "page7":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg07.scn")!
-
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_07", recursively: false)!
-                node.addChildNode(eleNode)
-
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_07", recursively: false)!
-                node.addChildNode(pigNode)
-
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = ""
-            case "page8":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg08.scn")!
-
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_08", recursively: false)!
-                node.addChildNode(eleNode)
-
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_08", recursively: false)!
-                node.addChildNode(pigNode)
-
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page8"
-            case "page9":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg09.scn")!
-
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_09", recursively: false)!
-                node.addChildNode(eleNode)
-
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_09", recursively: false)!
-                node.addChildNode(pigNode)
-
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page9"
-            case "page10":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg10.scn")!
-
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_10", recursively: false)!
-                node.addChildNode(eleNode)
-
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_10", recursively: false)!
-                node.addChildNode(pigNode)
-
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page10"
-            case "page11":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg11.scn")!
+                // grab page number from image name and convert to string
+                var image = imageAnchor.referenceImage.name
+                var pgNum = String(image!.suffix(2))
                 
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_11", recursively: false)!
-                node.addChildNode(eleNode)
+                // debug statements
+                // print("Debug modelPath:", modelPath+pgNum+".scn")
+                // print("Debug elePath:", elePath+pgNum)
+                // print("Debug pgiPath:", pigPath+pgNum)
+                // print("Debug audioPath:", audioPath+pgNum)
                 
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_11", recursively: false)!
-                node.addChildNode(pigNode)
+                // always execute
+                let modelScene = SCNScene(named: modelPath + pgNum + ".scn")!
+                
+                // execute only if elephant node exists
+                if let eleNode = modelScene.rootNode.childNode(withName: elePath + pgNum, recursively: false) {
+                    node.addChildNode(eleNode)
+                }
+                
+                // execute only if pig node exists
+                if let pigNode = modelScene.rootNode.childNode(withName: pigPath + pgNum, recursively: false) {
+                    node.addChildNode(pigNode)
+                }
                 
                 updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page11"
-            case "page12":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg12.scn")!
-                
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_12", recursively: false)!
-                node.addChildNode(eleNode)
-                
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_12", recursively: false)!
-                node.addChildNode(pigNode)
-            
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page12"
-            case "page13":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg13.scn")!
-                
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_13", recursively: false)!
-                node.addChildNode(eleNode)
-                
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_13", recursively: false)!
-                node.addChildNode(pigNode)
-
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page13"
-            case "page14":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg14.scn")!
-                
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_14", recursively: false)!
-                node.addChildNode(eleNode)
-                
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_14", recursively: false)!
-                node.addChildNode(pigNode)
-            
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page14"
-            case "page15":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg15.scn")!
-                
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_15", recursively: false)!
-                node.addChildNode(eleNode)
-                
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_15", recursively: false)!
-                node.addChildNode(pigNode)
-            
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page15"
-            case "page16":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg16.scn")!
-                
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_16", recursively: false)!
-                node.addChildNode(eleNode)
-                
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_16", recursively: false)!
-                node.addChildNode(pigNode)
-                
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page16"
-            case "page17":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg17.scn")!
-                
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_17", recursively: false)!
-                node.addChildNode(eleNode)
-                
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_17", recursively: false)!
-                node.addChildNode(pigNode)
-            
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page17"
-            case "page18":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg18.scn")!
-                
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_18", recursively: false)!
-                node.addChildNode(eleNode)
-            
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page18_19"
-            case "page19":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg19.scn")!
-                
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_19", recursively: false)!
-                node.addChildNode(pigNode)
-            
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page18_19"
-            case "page20":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg20.scn")!
-                
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_20", recursively: false)!
-                node.addChildNode(eleNode)
-                
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_20", recursively: false)!
-                node.addChildNode(pigNode)
-            
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page20"
-            case "page21":
-                let modelScene = SCNScene(named: "art.scnassets/Models/mesh_pg21.scn")!
-                
-                let eleNode = modelScene.rootNode.childNode(withName: "Gerald_21", recursively: false)!
-                node.addChildNode(eleNode)
-                
-                let pigNode = modelScene.rootNode.childNode(withName: "Piggie_21", recursively: false)!
-                node.addChildNode(pigNode)
-                
-                updatePage(node: node, imageAnchor: imageAnchor)
-                fileName = "page21"
-            default:
-                print("Page not found")
+                fileName = audioPath+pgNum
             }
+        } else {
+            print("Page not found")
         }
         
         return node
