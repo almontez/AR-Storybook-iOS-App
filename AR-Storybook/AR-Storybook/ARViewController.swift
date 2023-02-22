@@ -31,8 +31,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     // Light
     let lightSource = SCNLight()
-    // Light color
-    var lightTemp : CGFloat!
+    // Light pivot node
+    let lightPivotNode = SCNNode()
     
     // Runs once when the session loads
     override func viewDidLoad() {
@@ -70,10 +70,20 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         // Run the view's session
         sceneView.session.run(configuration)
         
-        // Add the light to the scene
+        // Add lights to the scene
         let lightNode = SCNNode()
         lightNode.light = lightSource
-        sceneView.scene.rootNode.addChildNode(lightNode)
+        lightNode.worldPosition = SCNVector3(x: 0.0, y: 0.3, z: 0.2)
+        lightPivotNode.addChildNode(lightNode)
+        
+        let ambLightNode = SCNNode()
+        let ambLight = SCNLight()
+        ambLight.type = .ambient
+        ambLight.intensity = 300
+        ambLightNode.light = ambLight
+        lightPivotNode.addChildNode(ambLightNode)
+        
+        sceneView.scene.rootNode.addChildNode(lightPivotNode)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -87,15 +97,22 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     // Runs once per frame
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        if currentNode != nil{
+            // Keep the light between the camera and the models
+            lightPivotNode.worldPosition = currentNode.worldPosition
+            lightPivotNode.eulerAngles.y = sceneView.session.currentFrame!.camera.eulerAngles.y
+        }
         if lookAtCamera && currentNode != nil{
+            // Rotate the models to always look at the camera
             currentNode.childNode(withName: "group", recursively: false)!.eulerAngles.y = sceneView.session.currentFrame!.camera.eulerAngles.y -
                                                                                           currentNode.eulerAngles.y
         }
         if sceneView.session.currentFrame != nil{
+            // Update light intensity and color
             if sceneView.session.currentFrame!.lightEstimate != nil{
-                lightTemp = sceneView.session.currentFrame!.lightEstimate!.ambientColorTemperature
-                lightSource.temperature = lightTemp
-                //print("Color Temp: \(lightTemp!)")
+                let lightEstimate = sceneView.session.currentFrame!.lightEstimate!
+                lightSource.intensity = lightEstimate.ambientIntensity
+                lightSource.temperature = lightEstimate.ambientColorTemperature
             }
         }
     }
