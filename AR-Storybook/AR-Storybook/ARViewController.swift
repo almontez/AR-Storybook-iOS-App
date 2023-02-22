@@ -20,10 +20,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     // Information of the current page
     var currentAnchor : ARImageAnchor!
     var currentNode : SCNNode!
-    // Original rotation of the current node
-    var currentRotationOffset : Float = 0.0
+    
     // Whether to constrain the model to the camera
     var lookAtCamera = false
+    
     // Create and initialize the AVAudioPlayer object
     var player: AVAudioPlayer!
     // File name of a page's corresponding audio
@@ -31,7 +31,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     // Light
     let lightSource = SCNLight()
-    // Ambient light color
+    // Light color
     var lightTemp : CGFloat!
     
     // Runs once when the session loads
@@ -48,7 +48,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
 //        sceneView.showsStatistics = true
         
-        lightSource.type = .ambient
+        lightSource.type = .omni
         sceneView.autoenablesDefaultLighting = true
     }
     
@@ -88,7 +88,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     // Runs once per frame
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         if lookAtCamera && currentNode != nil{
-            currentNode.eulerAngles.y = -sceneView.session.currentFrame!.camera.eulerAngles.y + currentRotationOffset
+            currentNode.childNode(withName: "group", recursively: false)!.eulerAngles.y = sceneView.session.currentFrame!.camera.eulerAngles.y -
+                                                                                          currentNode.eulerAngles.y
         }
         if sceneView.session.currentFrame != nil{
             if sceneView.session.currentFrame!.lightEstimate != nil{
@@ -99,17 +100,16 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    // Runs everytime a node is added to the scene
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        if lookAtCamera{
-            currentRotationOffset = currentNode.eulerAngles.y
-        }
-    }
-    
     // Runs once per recognized image
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-        node.eulerAngles.x = .pi/2.0
+        // The node to attach to the scene
+        let baseNode = SCNNode()
+        baseNode.eulerAngles.x = .pi/2.0
+        
+        // The node with clean transforms, to contain the characters
+        let grpNode = SCNNode()
+        grpNode.name = "group"
+        baseNode.addChildNode(grpNode)
         
         // Is the anchor an image?
         if let imageAnchor = anchor as? ARImageAnchor{
@@ -120,28 +120,25 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 let modelScene = SCNScene(named: "art.scnassets/Models/mesh_cover.scn")!
 
                 let eleNode = modelScene.rootNode.childNode(withName: "Gerald_01", recursively: false)!
-                eleNode.eulerAngles.y = -.pi/4.0
-                eleNode.worldPosition = SCNVector3(-0.026, 0.0, 0.06)
-                node.addChildNode(eleNode)
+                grpNode.addChildNode(eleNode)
 
                 let pigNode = modelScene.rootNode.childNode(withName: "Piggie_01", recursively: false)!
-                pigNode.worldPosition = SCNVector3(0.05, 0.0, 0.08)
-                node.addChildNode(pigNode)
+                grpNode.addChildNode(pigNode)
 
-                updatePage(node: node, imageAnchor: imageAnchor)
+                updatePage(node: baseNode, imageAnchor: imageAnchor)
                 fileName = "Cover"
             } else {
                 // else branch used for numbered paths
                 
                 // partial paths
-                var modelPath = "art.scnassets/Models/mesh_pg"
-                var elePath = "Gerald_"
-                var pigPath = "Piggie_"
-                var audioPath = "page"
+                let modelPath = "art.scnassets/Models/mesh_pg"
+                let elePath = "Gerald_"
+                let pigPath = "Piggie_"
+                let audioPath = "page"
                 
                 // grab page number from image name and convert to string
-                var image = imageAnchor.referenceImage.name
-                var pgNum = String(image!.suffix(2))
+                let image = imageAnchor.referenceImage.name
+                let pgNum = String(image!.suffix(2))
                 
                 // debug statements
                 // print("Debug modelPath:", modelPath+pgNum+".scn")
@@ -154,24 +151,32 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 
                 // execute only if elephant node exists
                 if let eleNode = modelScene.rootNode.childNode(withName: elePath + pgNum, recursively: false) {
-                    node.addChildNode(eleNode)
+                    grpNode.addChildNode(eleNode)
                 }
                 
                 // execute only if pig node exists
                 if let pigNode = modelScene.rootNode.childNode(withName: pigPath + pgNum, recursively: false) {
-                    node.addChildNode(pigNode)
+                    grpNode.addChildNode(pigNode)
                 }
                 
                 // OPTIONAL - Call unique page functions here
+                if pgNum == "02" || pgNum == "03"{
+                    lookAtCamera = true
+                }
                 
-                updatePage(node: node, imageAnchor: imageAnchor)
+                // Update info on current page
+                updatePage(node: baseNode, imageAnchor: imageAnchor)
                 fileName = audioPath+pgNum
+            }
+            if lookAtCamera{
+                // If the model needs to face the camera, rotate it accordingly when it first appears
+                grpNode.eulerAngles.y = sceneView.session.currentFrame!.camera.eulerAngles.y
             }
         } else {
             print("Page not found")
         }
         
-        return node
+        return baseNode
     }
     
     // Reset current page info when a different page is detected
@@ -186,7 +191,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         }
         // Reset look-at variables
         lookAtCamera = false
-        currentRotationOffset = 0.0
         // Reset fileName variable to empty string
         fileName = ""
     }
