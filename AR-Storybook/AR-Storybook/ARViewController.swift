@@ -70,20 +70,28 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         // Run the view's session
         sceneView.session.run(configuration)
         
-        // Add lights to the scene
-        let lightNode = SCNNode()
-        lightNode.light = lightSource
-        lightNode.worldPosition = SCNVector3(x: 0.0, y: 0.3, z: 0.2)
-        lightPivotNode.addChildNode(lightNode)
+        if sceneView.scene.rootNode.childNode(withName: "lightPivot", recursively: false) == nil{
+            // This if block prevents lights from being duplicated
+            // when the user navigates from and back to the camera
+            lightPivotNode.name = "lightPivot"
+            
+            // Add lights to the scene
+            let lightNode = SCNNode()
+            lightNode.light = lightSource
+            lightNode.worldPosition = SCNVector3(x: 0.0, y: 0.3, z: 0.2)
+            lightPivotNode.addChildNode(lightNode)
+            
+            let ambLightNode = SCNNode()
+            let ambLight = SCNLight()
+            ambLight.type = .ambient
+            ambLight.intensity = 300
+            ambLightNode.light = ambLight
+            lightPivotNode.addChildNode(ambLightNode)
+            
+            sceneView.scene.rootNode.addChildNode(lightPivotNode)
+        }
         
-        let ambLightNode = SCNNode()
-        let ambLight = SCNLight()
-        ambLight.type = .ambient
-        ambLight.intensity = 300
-        ambLightNode.light = ambLight
-        lightPivotNode.addChildNode(ambLightNode)
         
-        sceneView.scene.rootNode.addChildNode(lightPivotNode)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -155,7 +163,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 
                 // grab page number from image name and convert to string
                 let image = imageAnchor.referenceImage.name
-                let pgNum = String(image!.suffix(2))
+                var pgNum = String(image!.suffix(2))
                 
                 // debug statements
                 // print("Debug modelPath:", modelPath+pgNum+".scn")
@@ -180,10 +188,13 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 if pgNum == "02" || pgNum == "03"{
                     lookAtCamera = true
                 }
+                if pgNum == "18" || pgNum == "19"{
+                    pgNum = "18_19"
+                }
                 
                 // Update info on current page
                 updatePage(node: baseNode, imageAnchor: imageAnchor)
-                fileName = audioPath+pgNum
+                fileName = audioPath + pgNum
             }
             if lookAtCamera{
                 // If the model needs to face the camera, rotate it accordingly when it first appears
