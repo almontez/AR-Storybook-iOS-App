@@ -49,7 +49,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 //        sceneView.showsStatistics = true
         
         lightSource.type = .omni
-        sceneView.autoenablesDefaultLighting = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -184,8 +183,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                     grpNode.addChildNode(pigNode)
                 }
                 
-                // OPTIONAL - Call unique page functions here
-                if pgNum == "02" || pgNum == "03"{
+                // Call unique page functions here
+                if rotationTable[image!]! == 1{
                     lookAtCamera = true
                 }
                 if pgNum == "18" || pgNum == "19"{

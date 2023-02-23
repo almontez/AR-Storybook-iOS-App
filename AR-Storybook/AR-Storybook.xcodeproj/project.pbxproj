@@ -47,7 +47,7 @@
 		C33C24852999FB7E00D5781B /* page20.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C33C24762999FB7E00D5781B /* page20.m4a */; };
 		C33C24862999FB7E00D5781B /* page27.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C33C24772999FB7E00D5781B /* page27.m4a */; };
 		C33C24872999FB7E00D5781B /* page18_19.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C33C24782999FB7E00D5781B /* page18_19.m4a */; };
-		CC339D5A29A5B752009EACCA /* modelRotation.json in Resources */ = {isa = PBXBuildFile; fileRef = CC339D5929A5B752009EACCA /* modelRotation.json */; };
+		CCC527B529A6AF82006E76B3 /* ModelsRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC527B429A6AF82006E76B3 /* ModelsRotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,7 +93,7 @@
 		C33C24762999FB7E00D5781B /* page20.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = page20.m4a; sourceTree = "<group>"; };
 		C33C24772999FB7E00D5781B /* page27.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = page27.m4a; sourceTree = "<group>"; };
 		C33C24782999FB7E00D5781B /* page18_19.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = page18_19.m4a; sourceTree = "<group>"; };
-		CC339D5929A5B752009EACCA /* modelRotation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = modelRotation.json; sourceTree = "<group>"; };
+		CCC527B429A6AF82006E76B3 /* ModelsRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsRotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,12 +138,12 @@
 				0BCEA3BE2988D94F00CE7064 /* Info.plist */,
 				0BE8D7AC2982FAC300BCEFE5 /* AppDelegate.swift */,
 				0BE8D7B02982FAC300BCEFE5 /* ARViewController.swift */,
+				CCC527B429A6AF82006E76B3 /* ModelsRotation.swift */,
 				0BCEA3B42988D18F00CE7064 /* HomeViewController.swift */,
 				0BCEA3B62988D1A700CE7064 /* GuideViewController.swift */,
 				0BE8D7B22982FAC300BCEFE5 /* Main.storyboard */,
 				0BE8D7AE2982FAC300BCEFE5 /* art.scnassets */,
 				0BE8D7B52982FAC400BCEFE5 /* Assets.xcassets */,
-				CC339D5929A5B752009EACCA /* modelRotation.json */,
 				0BE8D7B72982FAC400BCEFE5 /* LaunchScreen.storyboard */,
 				C33C244B2999FAF900D5781B /* AudioFiles */,
 				0BCEA3C12988DA9000CE7064 /* Fonts */,
@@ -280,7 +280,6 @@
 				C33C24832999FB7E00D5781B /* page31.m4a in Resources */,
 				C33C247B2999FB7E00D5781B /* page32.m4a in Resources */,
 				C33C245E2999FB3300D5781B /* page09.m4a in Resources */,
-				CC339D5A29A5B752009EACCA /* modelRotation.json in Resources */,
 				C33C24652999FB3300D5781B /* Cover.m4a in Resources */,
 				C33C24792999FB7E00D5781B /* page28.m4a in Resources */,
 			);
@@ -296,6 +295,7 @@
 				0BE8D7B12982FAC300BCEFE5 /* ARViewController.swift in Sources */,
 				0BCEA3B72988D1A700CE7064 /* GuideViewController.swift in Sources */,
 				0BE8D7AD2982FAC300BCEFE5 /* AppDelegate.swift in Sources */,
+				CCC527B529A6AF82006E76B3 /* ModelsRotation.swift in Sources */,
 				0BCEA3B52988D18F00CE7064 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

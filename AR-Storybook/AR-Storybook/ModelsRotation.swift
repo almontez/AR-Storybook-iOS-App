@@ -1,0 +1,68 @@
+//
+//  ModelsRotation.swift
+//  AR-Storybook
+//
+//  Created by Garrick Chan on 2/22/23.
+//
+
+import Foundation
+
+let rotationTable = [
+    "BookCover": 0,
+    "page02": 1,
+    "page03": 1,
+    "page04": 0,
+    "page05": 0,
+    "page06": 0,
+    "page07": 1,
+    "page08": 1,
+    "page09": 1,
+    "page10": 1,
+    "page11": 1,
+    "page12": 1,
+    "page13": 1,
+    "page14": 1,
+    "page15": 0,
+    "page16": 0,
+    "page17": 0,
+    "page18": 0,
+    "page19": 0,
+    "page20": 0,
+    "page21": 0,
+    "page22": 0,
+    "page23": 0,
+    "page24": 0,
+    "page25": 0,
+    "page26": 0,
+    "page27": 0,
+    "page28": 0,
+    "page29": 0,
+    "page30": 0,
+    "page31": 0,
+    "page32": 0,
+    "page33": 0,
+    "page34": 0,
+    "page35": 0,
+    "page36": 0,
+    "page37": 0,
+    "page38": 0,
+    "page39": 0,
+    "page40": 0,
+    "page41": 0,
+    "page42": 0,
+    "page43": 0,
+    "page44": 0,
+    "page45": 0,
+    "page46": 0,
+    "page47": 0,
+    "page48": 0,
+    "page49": 1,
+    "page50": 1,
+    "page51": 0,
+    "page52": 1,
+    "page53": 0,
+    "page54": 0,
+    "page55": 0,
+    "page56": 1,
+    "page57": 0
+]
