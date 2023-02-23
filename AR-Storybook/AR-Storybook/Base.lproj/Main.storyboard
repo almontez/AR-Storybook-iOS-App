@@ -148,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I91-BP-ola" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3723" y="27"/>
+            <point key="canvasLocation" x="3722.9007633587785" y="26.760563380281692"/>
         </scene>
         <!--ARCamera-->
         <scene sceneID="tXr-a1-R10">
