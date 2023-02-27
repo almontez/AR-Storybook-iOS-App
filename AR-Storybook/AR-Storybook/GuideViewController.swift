@@ -17,6 +17,8 @@ class GuideViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         // Circle Button
         soundButton.layer.cornerRadius = soundButton.frame.width / 2
         soundButton.layer.masksToBounds = true
