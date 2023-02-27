@@ -48,6 +48,7 @@
 		C33C24862999FB7E00D5781B /* page27.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C33C24772999FB7E00D5781B /* page27.m4a */; };
 		C33C24872999FB7E00D5781B /* page18_19.m4a in Resources */ = {isa = PBXBuildFile; fileRef = C33C24782999FB7E00D5781B /* page18_19.m4a */; };
 		C3B2CC8A29A5CD180012BB08 /* tutorial.txt in Resources */ = {isa = PBXBuildFile; fileRef = C3B2CC8929A5CD170012BB08 /* tutorial.txt */; };
+		CCC527B529A6AF82006E76B3 /* ModelsRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC527B429A6AF82006E76B3 /* ModelsRotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +121,7 @@
 		C38D9FC129AD5B4200AB3AD0 /* page50.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = page50.m4a; sourceTree = "<group>"; };
 		C38D9FC229AD5B4300AB3AD0 /* page45.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = page45.m4a; sourceTree = "<group>"; };
 		C3B2CC8929A5CD170012BB08 /* tutorial.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tutorial.txt; sourceTree = "<group>"; };
+		CCC527B429A6AF82006E76B3 /* ModelsRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsRotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				0BCEA3BE2988D94F00CE7064 /* Info.plist */,
 				0BE8D7AC2982FAC300BCEFE5 /* AppDelegate.swift */,
 				0BE8D7B02982FAC300BCEFE5 /* ARViewController.swift */,
+				CCC527B429A6AF82006E76B3 /* ModelsRotation.swift */,
 				0BCEA3B42988D18F00CE7064 /* HomeViewController.swift */,
 				0BCEA3B62988D1A700CE7064 /* GuideViewController.swift */,
 				0BE8D7B22982FAC300BCEFE5 /* Main.storyboard */,
@@ -348,6 +351,7 @@
 				0BE8D7B12982FAC300BCEFE5 /* ARViewController.swift in Sources */,
 				0BCEA3B72988D1A700CE7064 /* GuideViewController.swift in Sources */,
 				0BE8D7AD2982FAC300BCEFE5 /* AppDelegate.swift in Sources */,
+				CCC527B529A6AF82006E76B3 /* ModelsRotation.swift in Sources */,
 				0BCEA3B52988D18F00CE7064 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,7 +500,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RJ6WJ2NCUW;
+				DEVELOPMENT_TEAM = 2J59W23G3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "AR-Storybook/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -512,7 +516,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = zhenjiam.storybook;
+				PRODUCT_BUNDLE_IDENTIFIER = "alm-ar-storybook";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -529,7 +533,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RJ6WJ2NCUW;
+				DEVELOPMENT_TEAM = 2J59W23G3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "AR-Storybook/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -545,7 +549,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = zhenjiam.storybook;
+				PRODUCT_BUNDLE_IDENTIFIER = "alm-ar-storybook";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
