@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "page6.png",
+      "filename" : "page06.png",
       "idiom" : "universal"
     }
   ],
@@ -11,6 +11,6 @@
   },
   "properties" : {
     "unit" : "inches",
-    "width" : 5.5
+    "width" : 3.6000000000000001
   }
 }

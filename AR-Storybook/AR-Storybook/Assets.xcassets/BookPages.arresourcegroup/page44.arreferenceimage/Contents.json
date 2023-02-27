@@ -1,0 +1,16 @@
+{
+  "images" : [
+    {
+      "filename" : "page44.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "unit" : "inches",
+    "width" : 4.2902343749999998
+  }
+}

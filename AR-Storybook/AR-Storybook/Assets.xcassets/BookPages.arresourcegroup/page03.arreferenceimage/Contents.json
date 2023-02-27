@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "page3.png",
+      "filename" : "page03.png",
       "idiom" : "universal"
     }
   ],
@@ -10,7 +10,7 @@
     "version" : 1
   },
   "properties" : {
-    "unit" : "centimeters",
-    "width" : 10.5
+    "unit" : "inches",
+    "width" : 4
   }
 }

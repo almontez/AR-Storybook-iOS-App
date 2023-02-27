@@ -165,10 +165,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 var pgNum = String(image!.suffix(2))
                 
                 // debug statements
-                // print("Debug modelPath:", modelPath+pgNum+".scn")
-                // print("Debug elePath:", elePath+pgNum)
-                // print("Debug pgiPath:", pigPath+pgNum)
-                // print("Debug audioPath:", audioPath+pgNum)
+                print("Debug modelPath:", modelPath+pgNum+".scn")
+                print("Debug elePath:", elePath+pgNum)
+                print("Debug pgiPath:", pigPath+pgNum)
+                print("Debug audioPath:", audioPath+pgNum)
                 
                 // always execute
                 let modelScene = SCNScene(named: modelPath + pgNum + ".scn")!
