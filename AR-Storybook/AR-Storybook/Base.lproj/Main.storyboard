@@ -48,19 +48,19 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="MWt-cd-LMa" userLabel="titleCard">
-                                <rect key="frame" x="59" y="584.33333333333337" width="275" height="104.66666666666663"/>
+                                <rect key="frame" x="37.333333333333343" y="587" width="318.33333333333326" height="102"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Agk-ZV-E7q">
-                                        <rect key="frame" x="0.66666666666665719" y="0.0" width="274" height="77"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="318.33333333333326" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Storybook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXL-6o-t40">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="77"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="278" height="70"/>
                                                 <fontDescription key="fontDescription" name="Chewy-Regular" family="Chewy" pointSize="60"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCa-nO-QET">
-                                                <rect key="frame" x="247" y="0.0" width="27" height="32.333333333333336"/>
+                                                <rect key="frame" x="285" y="0.0" width="33.333333333333314" height="29.333333333333332"/>
                                                 <fontDescription key="fontDescription" name="Chewy-Regular" family="Chewy" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -68,7 +68,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNLOCK A NEW MAGICAL REALITY" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="8" translatesAutoresizingMaskIntoConstraints="NO" id="2CF-GC-kWa">
-                                        <rect key="frame" x="0.0" y="88" width="275" height="16.666666666666671"/>
+                                        <rect key="frame" x="9.6666666666666572" y="81" width="299.33333333333337" height="21"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.90000000000000002" height="1"/>
                                         <fontDescription key="fontDescription" name="LeagueSpartan-SemiBold" family="League Spartan" pointSize="18"/>
                                         <nil key="textColor"/>
@@ -105,8 +105,22 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guideimg" translatesAutoresizingMaskIntoConstraints="NO" id="x3i-K4-Y7J">
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How To Use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bx0-e3-jSL">
-                                <rect key="frame" x="88" y="109" width="217" height="65"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hold the phone over the book so you can see one page in the camera." lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDh-Yw-HmR">
+                                <rect key="frame" x="27" y="249" width="350" height="139"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap the Camera tab on the bottom right to open the camera." lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPX-Zq-1lZ">
+                                <rect key="frame" x="27" y="146" width="341" height="139"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="How To Use" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bx0-e3-jSL">
+                                <rect key="frame" x="88" y="84" width="217" height="65"/>
                                 <fontDescription key="fontDescription" name="Chewy-Regular" family="Chewy" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -126,6 +140,13 @@
                                     <action selector="soundButtonPressedDown:" destination="eVl-Se-pb0" eventType="touchDown" id="7NF-Lj-Vme"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Press the sound button on the bottom left to listen to the words on the page." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUA-a1-khu">
+                                <rect key="frame" x="27" y="347" width="341" height="158"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bUM-3k-Hrd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
