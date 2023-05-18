@@ -18,6 +18,8 @@ The AR pop-up storybook companion brings to life children’s books using augmen
 
 ## Video Demo
 
+https://github.com/almontez/CS476-AR-Storybook-App/assets/91339804/c3b47520-dca5-4681-97bb-837253028408
+
 [Project Archive and Documentation](https://docs.google.com/document/d/1akW3GfHy_p-ui4t-MCqg0uV5pEPf7fludyHCm-VpdeE/edit?usp=sharing)
 
 ## Product Spec
